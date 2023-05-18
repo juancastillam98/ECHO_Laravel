@@ -1,0 +1,1 @@
+<h4>holaaa</h4><?php /**PATH /Applications/XAMPP/xamppfiles/htdocs/Laravel/PROYECTO_Final_Echo/Laravel/Echo/resources/views/prueba.blade.php ENDPATH**/ ?>
