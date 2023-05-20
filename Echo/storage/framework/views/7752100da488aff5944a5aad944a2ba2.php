@@ -8,43 +8,62 @@
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?> 
-        <h1>Oferta Empleo <?php echo e($puesto_id->id); ?></h1>
-
-        <?php dump($oferta_solicitudes); ?>
-                                    <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Puesto</th>
-                                            <th>Ofertas</th>
-                                            <th>Total Solicitudes</th>
-                                            <th>Ver</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $__currentLoopData = $oferta_solicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $solicitudes): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <tr>
-                                                <td><?php echo e($solicitudes ->puesto); ?></td>
-                                                <td><?php echo e($solicitudes ->oferta); ?></td>
-                                                <td><?php echo e($solicitudes ->total_solicitudes); ?></td>     
-
-                                                           
-
-                                                <td>
-                                                    <form action="<?php echo e(route('ofertas_empleo.list_users_information', [
-                                                        'oferta_id'=>$solicitudes->id_oferta,
-                                                        'puesto_id'=>$puesto_id->id, 
-                                                        'empresa_id'=>$empresa_id->id
-                                                        ])); ?>" method="get">
-                                                        <button class="btn btn-primary" type="submit">Ver Más</button>
-                                                    </form> 
-                                                 
-                                                </td>
-                                            </tr>
-                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    </tbody>
-                                </table>
+        <h1 class="text-4xl font-extrabold my-3">Listado de las ofertas de empleo</h1>
      <?php $__env->endSlot(); ?>
+    <div class="container mx-auto px-2 bg-color-fondo-300 color-texto-blanco mt-8">
+        
+
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left color-texto-blanco bg-color-fondo-200">
+                    <thead class="bg-color-principal text-sm uppercase">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Puesto
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Ofertas
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Total Solicitudes
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                <span class="sr-only">Ver</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $__currentLoopData = $oferta_solicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $solicitudes): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr class=" border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <?php echo e($solicitudes ->puesto); ?>
+
+                                </th>
+                                <td class="px-6 py-4">
+                                    <td><?php echo e($solicitudes ->oferta); ?></td>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <td><?php echo e($solicitudes ->total_solicitudes); ?></td>  
+                                </td>
+
+                                <td class="px-6 py-4 text-right">
+                                    <form action="<?php echo e(route('ofertas_empleo.list_users_information', [
+                                        'oferta_id'=>$solicitudes->id_oferta,
+                                        'puesto_id'=>$puesto_id->id, 
+                                        'empresa_id'=>$empresa_id->id
+                                        ])); ?>" method="get">
+                                        <button class="btn-principal font-bold cursor-pointer" type="submit">Ver Más</button>
+                                    </form> 
+                                </td>
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </tbody>
+                </table>
+            </div>
+
+       
+       
+    </div>
+                            
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>

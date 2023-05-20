@@ -5,12 +5,12 @@
             $usuarioActual=Auth::user();
         @endphp
 
-        <div class="container mx-auto px-2 bg-color-fondo-300 color-texto-blanco">
-           <h1 id="titulo_profile" class="text-4xl font-extrabold my-3">Mi perfil</h1>
+        <div class="container mx-auto px-2 bg-color-fondo-300 color-texto-blanco mt-8">
+           <h1 id="titulo_profile" class="text-4xl font-extrabold my-3 mt-10">Mi perfil</h1>
                 <div class="grid grid-cols-3 gap4 mt-10">
                     <div id="menu-izq" class="">
                         <div class="grid grid-rows-[200px_minmax(300px, 500px)_100px] gap-12">
-                            <div class="flex justify-center">
+                            <div class="flex justify-center mt-1">
                                 @if (!$esCandidato)
                                     <h2 id="titulo_profile" class="text-3xl text-center font-extrabold my-3">Campo foto</h2>
                                 @else
@@ -22,12 +22,23 @@
                                                 {{-- <label for="foto" class="block mb-2 text-sm font-medium">Foto</label> --}}
                                                 <input type="file" id="foto" name="foto" class="foto-input texto-input-centro rounded-full w-48 h-48 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700" placeholder="foto">
                                             </div>
-                                            <div class="flex justify-center mt-4">
-                                                {{-- <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Guardar</button> --}}
-                                            </div>
+                                            
                                         </form>
                                     @else
-                                        <img  class ="rounded-full w-48 h-48" src="{{ asset('storage/img_users/' . $candidato_info->foto) }}" alt="Foto de perfil">
+                                        <form id="foto-form" method="post" action="{{ route('candidatos.update_photo', ['candidato'=>$candidato_info->id]) }}" enctype="multipart/form-data">
+                                             {{method_field('PUT')}}
+                                            @csrf
+                                            <div class="flex justify-center">
+                                                {{-- <img src="{{ asset('storage/img_users/' . $candidato_info->foto) }}" alt="Foto de perfil" class="rounded-full w-48 h-48"> --}}
+                                                <img  class ="rounded-full w-48 h-48" src="{{ asset('storage/img_users/' . $candidato_info->foto) }}" alt="Foto de perfil">
+
+                                            </div>
+                                            <div class="flex justify-center mt-4">
+                                                <label for="foto" class="btn-principal text-white font-bold cursor-pointer">Cambiar foto</label>
+                                                <input type="file" id="foto" name="foto" class="foto-input hidden" accept="image/*">
+                                                {{-- <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4">Guardar cambios</button> --}}
+                                            </div>
+                                        </form>
 
                                     @endif
                                 @endif
@@ -36,25 +47,25 @@
                             <div class=" border-b rounded-lg bg-color-fondo-200 mt-8">
                                 <ul class="flex flex-col flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
                                     <li class="mr-2" role="presentation">
-                                        <button class="inline-block p-4 border-b-2 rounded-t-lg text-lg	" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Perfil</button>
+                                        <button class="inline-block p-4 rounded-t-lg hover:text-cyan-300 hover:border-gray-300 text-lg" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Perfil</button>
                                     </li>
                                     <li class="mr-2" role="presentation">
-                                        <button class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 text-lg" id="dashboard-tab" data-tabs-target="#company" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Empresa</button>
+                                        <button class="inline-block p-4 rounded-t-lg hover:text-cyan-300 hover:border-gray-300 text-lg" id="dashboard-tab" data-tabs-target="#company" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Empresa</button>
                                     </li>
                                     <li class="mr-2" role="presentation">
-                                        <button class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 text-lg" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Solicitudes</button>
+                                        <button class="inline-block p-4 rounded-t-lg hover:text-cyan-300 hover:border-gray-300 text-lg" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Solicitudes</button>
                                     </li>
                                 </ul>
                             </div>
                         </div> 
                     </div>
-                    <div id="menu-derecha" class="col-span-2">
+                    <div id="menu-derecha" class="col-span-2"> 
                         {{--tabs user navigation menu links--}}
                         <div id="myTabContent">
                             {{--Profile info--}}
                             <div class="hidden p-2" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="bg-color-principal flex justify-center max-w-xs py-3 b-radius-xl mb-2">
-                                        <h2 class="text-3xl">{{$usuarioActual->name}}</h2>
+                                    <h2 class="text-3xl font-bold">{{$usuarioActual->name}}</h2>
                                 </div>
                                 
                                 @if (!$esCandidato)
@@ -180,76 +191,69 @@
                                 @endif
                             </div>
                             {{--Profile company info--}}
-                            <div class="hidden p-4 rounded-lg bg-color-fondo-200" id="company" role="tabpanel" aria-labelledby="dashboard-tab">
+                            <div class="hidden p-4" id="company" role="tabpanel" aria-labelledby="dashboard-tab">
                                 @if (!$tieneEmpresa)       
-                                    <a href="{{route('empresas.create')}}">Crear empresa</a>
+                                    <a href="{{route('empresas.create')}}" class="btn-principal text-white font-bold cursor-pointer">Crear empresa</a>                
                                 @else
-                                        {{--Información de la empresa--}}
-                                        <h2 class="text-4xl font-bold  ">{{$empresa_info->nombre}} id={{$empresa_info->id}}</h2>
+                                    <div class="bg-color-principal flex justify-center max-w-xs py-3 b-radius-xl mb-2">
+                                        <h2 class="text-3xl font-bold  ">{{$empresa_info->nombre}}</h2>
+                                    </div>
+                                    {{--Información de la empresa--}}
+                                        
+                                    {{--Nombre de la empresa--}}
+                                    <form action="{{ route('ofertas_empleo.create', ['id'=>$usuarioActual->empresa->id])}}" method="get">
+                                        <button class="btn-principal font-bold cursor-pointer" type="submit">Crear oferta</button>
+                                    </form>  
 
-                                        {{--$usuarioActual->empresa->oferta_empleo--}}
-                                        <form action="{{ route('ofertas_empleo.create', ['id'=>$usuarioActual->empresa->id])}}" method="get">
-                                            <button class="btn btn-primary" type="submit">Crear oferta</button>
-                                        </form>  
-
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>Puesto</th>
-                                                    <th>Ofertas Publicada</th>
-                                                    <th>Acción</th>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($puestos as $oferta_puesto)
-                                                    <tr>
-                                    
-                                                        <td>{{$oferta_puesto ->nombre}}</td>
-                                                        <td>{{$oferta_puesto ->total_ofertas}}</td>
-                                                    
-                                                        <td>
-                                                            <!--se le pasa como parámetros el Id puesto y el id de la compañía-->
-                                                            <form action="{{ route('ofertas_empleo.show', ['ofertas_empleo'=>$oferta_puesto->id, 'empresa_id'=>$empresa_info->id])}}" method="get">
-                                                                <button class="btn btn-primary" type="submit">Ver Más</button>
-                                                            </form>
-                                                        </td>                                         
-                                                        
-                                                    </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
+                                    {{--Ofertas--}}
+                                    <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-3">
+                                        @foreach ($puestos as $oferta_puesto)            
+                                            <div class=" max-w-sm p-6 b-radius-xl bg-color-fondo-200 border border-cyan-300 rounded-lg shadow">
+                                                <a href="#">
+                                                    <h4 class="mb-2 text-3xl font-bold tracking-tight color-texto-blanco">{{$oferta_puesto ->nombre}}</h4>
+                                                </a>
+                                                <p class="mb-3 font-bold color-texto-blanco">Total ofertas: {{$oferta_puesto ->total_ofertas}}</p>
+                                            
+                                                <form action="{{ route('ofertas_empleo.show', ['ofertas_empleo'=>$oferta_puesto->id, 'empresa_id'=>$empresa_info->id])}}" method="get">
+                                                    <button class="btn-principal font-bold cursor-pointer flex items-center w-full justify-center" type="submit">
+                                                        <span> Ver Más</span>
+                                                        <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        @endforeach
+                                    </div>                    
                                 @endif
                             </div>
                                 {{-- user request--}}
-                            <div class="hidden p-4 rounded-lg bg-color-fondo-200" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                                @if ($esCandidato)
-                                    @if ($usuarioActual->candidato->solicitudes==null)       
-                                        <p>El usuario no ha realizado ninguna solicitud</p>
+                            <div class="hidden p-4 " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                                <div class="bg-color-principal flex justify-center max-w-xs py-3 b-radius-xl mb-2">
+                                    <h2 class="text-3xl font-bold  ">Mis solicitudes</h2>
+                                </div>
+                                <div class="b-radius-xl bg-color-fondo-200 my-3 p-5">
+                                    
+                                    @if ($esCandidato)
+                                        @if ($usuarioActual->candidato->solicitudes==null)       
+                                            <p>El usuario no ha realizado ninguna solicitud</p>
+                                        @else
+                                  
+                                            <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-3">
+                                                @foreach ($empresas as $empresa)            
+                                                    <div class=" max-w-sm p-6 b-radius-xl bg-color-fondo-200 border border-cyan-300 rounded-lg shadow">
+                                                        <a href="#">
+                                                            <h4 class="mb-2 text-3xl font-bold tracking-tight color-texto-blanco">{{$empresa ->nombre}}</h4>
+                                                        </a>
+                                                        <p class="mb-3 font-bold color-texto-blanco">Total ofertas: {{$empresa ->puestos}}</p>
+                                                        <p class="mb-3 font-bold color-texto-blanco">Fecha solicitud: {{$empresa ->created_at}}</p>
+                                                    </div>
+                                                @endforeach
+                                            </div> 
+                                        @endif
                                     @else
-                                        <p>Mis solicitudes</p>
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th>Empresa</th>
-                                                        <th>Puesto</th>
-                                                        <th>Fecha Solicitud</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($empresas as $empresa)
-                                                        <tr>
-                                                            <td>{{$empresa ->nombre}}</td>
-                                                            <td>{{$empresa ->puestos}}</td>
-                                                            <td>{{$empresa ->created_at}}</td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
+                                        <p>Tiene que completar tu perfil para poder solicitar ofertas</p>
                                     @endif
-                                @else
-                                    <p>Tiene que completar tu perfil para poder solicitar ofertas</p>
-                                @endif
+                                </div>
+                               
 
                                 
                             </div>

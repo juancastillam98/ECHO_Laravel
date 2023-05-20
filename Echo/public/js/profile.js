@@ -26,13 +26,14 @@ const textArea = document.querySelector("textarea");
 //.bloque al que le hemos hecho click añadimos la clase activo
 
 li.forEach((cadaLi, i) => {//cadaLi es cada uno de los li, i es la posición
-
+    const button = cadaLi.querySelector("button");//button que está dentro del li
     li[i].addEventListener("click", () => {//cuando haga click en cada uno de los elementos
-
         li.forEach((cadaLi, i) => {
             li[i].classList.remove("activo")
+            button.classList.remove("border-b-2");
         })
         li[i].classList.add("activo")
+        button.classList.add("border-b-2");
 
         const btnTexto = cadaLi.innerText;//extraico el texto de cada li, (recuerda que li es el <li> completo)
         titulo.innerText = btnTexto;

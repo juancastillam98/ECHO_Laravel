@@ -26,7 +26,7 @@
 
             <!-- Page Heading -->
             <?php if(isset($header)): ?>
-                <header class="bg-white dark:bg-gray-800 shadow">
+                <header class="bg-color-fondo-300 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <?php echo e($header); ?>
 
@@ -35,13 +35,13 @@
             <?php endif; ?>
 
             <!-- Page Content -->
-            <main class="bg-color-fondo-300">
+            <main class="bg-color-fondo-300 ">
                 <?php echo e($slot); ?>
 
             </main>
         </div>
         <script src="<?php echo e(asset('js/profile.js')); ?>"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+        <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         <?php echo \Livewire\Livewire::scripts(); ?>
 
     </body>

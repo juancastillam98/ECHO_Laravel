@@ -1,13 +1,13 @@
 :root {
     --bg-color-fondo: #323232;
-    --bg-color-fondo-300: #011640;
+    --bg-color-fondo-300: #011640;          
     --bg-color-fondo-200: #201e59;
     --bg-color-principal: #b600ff;
     --bg-color-principal-300: #323232;
     --bg-color-principal-200: #ee56ff;
     --bg-color-accent: #0840b8;
     --bg-color-accent-200: #88c8f0;
-    --color-texto: #e0e0e0;
+    --color-texto-blanco: #e0e0e0;
     --b-radius-xl: 1em;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .color-texto-blanco {
-    color: #e0e0e0;
+    color: var(--color-texto-blanco);
 }
 
 .color-texto-negro {
@@ -59,15 +59,26 @@ textarea {
     width: 100%;
 }
 
+form button[type=submit] {
+    background-color: initial;
+}
+
 .btn-principal {
-    background: linear-gradient(var(--bg-color-principal), var(--bg-color-principal-200));
-    padding: 0.75rem 1.2rem 0.75rem 1.2rem;
+    background: linear-gradient(45deg, #b600ff, var(--bg-color-principal-200)) !important;
+    padding: 0.5rem 1rem 0.5rem 1rem;
     border-radius: var(--b-radius-xl);
+
+    box-shadow: 0px 0px 3px 0px #00e4ff,
+        0 0 1px 1px #010707,
+        0 0 1px 0px #385558
 }
 
 .btn-principal:hover {
-    background-color: var(--bg-color-accent-200);
-    cursor: pointer;
+    background: linear-gradient(45deg, #00e1ff, var(--bg-color-accent-200));
+    transform: scale(1.1);
+    transition: transform .3s;
+    /*box-shadow: 0 0 10px red, 0 0 40px red, 0 0 40px red;*/
+    color: var(--bg-color-principal-300);
 }
 
 .texto-input-centro {
