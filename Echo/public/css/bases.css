@@ -1,6 +1,6 @@
 :root {
     --bg-color-fondo: #323232;
-    --bg-color-fondo-300: #011640;          
+    --bg-color-fondo-300: #011640;
     --bg-color-fondo-200: #201e59;
     --bg-color-principal: #b600ff;
     --bg-color-principal-300: #323232;
@@ -74,11 +74,15 @@ form button[type=submit] {
 }
 
 .btn-principal:hover {
-    background: linear-gradient(45deg, #00e1ff, var(--bg-color-accent-200));
+    background: linear-gradient(45deg, #00e1ff, var(--bg-color-accent-200)) !important;
     transform: scale(1.1);
     transition: transform .3s;
     /*box-shadow: 0 0 10px red, 0 0 40px red, 0 0 40px red;*/
     color: var(--bg-color-principal-300);
+}
+
+.bg-hover-principal:hover {
+    background: radial-gradient(95.57% 95.57% at 1.71% 0%, rgba(35, 33, 88, 0.89) 39.58%, rgba(91, 42, 109, 0.89) 100%);
 }
 
 .texto-input-centro {

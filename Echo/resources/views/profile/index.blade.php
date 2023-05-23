@@ -206,7 +206,7 @@
                                     </form>  
 
                                     {{--Ofertas--}}
-                                    <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-3">
+                                    <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-5">
                                         @foreach ($puestos as $oferta_puesto)            
                                             <div class=" max-w-sm p-6 b-radius-xl bg-color-fondo-200 border border-cyan-300 rounded-lg shadow">
                                                 <a href="#">

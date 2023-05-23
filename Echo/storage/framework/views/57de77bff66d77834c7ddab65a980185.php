@@ -14,6 +14,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
         <link rel="stylesheet" href="<?php echo e(asset('css/profile.css')); ?>">
         <link rel="stylesheet" href="<?php echo e(asset('css/bases.css')); ?>">
+        <link rel="stylesheet" href="<?php echo e(asset('css/home.css')); ?>">
 
         <!-- Scripts -->
         <?php echo app('Illuminate\Foundation\Vite')(['resources/css/app.css', 'resources/js/app.js']); ?>
@@ -35,7 +36,7 @@
             <?php endif; ?>
 
             <!-- Page Content -->
-            <main class="bg-color-fondo-300 ">
+            <main class="bg-color-fondo-300 mx-auto py-6 px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-10">
                 <?php echo e($slot); ?>
 
             </main>

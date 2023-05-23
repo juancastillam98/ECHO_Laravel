@@ -61,7 +61,10 @@ class CandidatoController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $candidato = Candidato::find($id);
+        return view("candidatos.show", [
+            "candidato" => $candidato
+        ]);
     }
 
     /**

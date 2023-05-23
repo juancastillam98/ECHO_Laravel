@@ -212,11 +212,11 @@
                                         
                                     
                                     <form action="<?php echo e(route('ofertas_empleo.create', ['id'=>$usuarioActual->empresa->id])); ?>" method="get">
-                                        <button class="btn-principal text-white font-bold cursor-pointer" type="submit">Crear oferta</button>
+                                        <button class="btn-principal font-bold cursor-pointer" type="submit">Crear oferta</button>
                                     </form>  
 
                                     
-                                    <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 gap-3">
+                                    <div class="mt-5 grid grid-cols-1 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-5">
                                         <?php $__currentLoopData = $puestos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $oferta_puesto): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>            
                                             <div class=" max-w-sm p-6 b-radius-xl bg-color-fondo-200 border border-cyan-300 rounded-lg shadow">
                                                 <a href="#">
@@ -225,7 +225,7 @@
                                                 <p class="mb-3 font-bold color-texto-blanco">Total ofertas: <?php echo e($oferta_puesto ->total_ofertas); ?></p>
                                             
                                                 <form action="<?php echo e(route('ofertas_empleo.show', ['ofertas_empleo'=>$oferta_puesto->id, 'empresa_id'=>$empresa_info->id])); ?>" method="get">
-                                                    <button class="btn-principal text-white font-bold cursor-pointer flex items-center w-full justify-center fondo-rojo" type="submit">
+                                                    <button class="btn-principal font-bold cursor-pointer flex items-center w-full justify-center" type="submit">
                                                         <span> Ver Más</span>
                                                         <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                                                     </button>

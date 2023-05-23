@@ -1,0 +1,48 @@
+h1 {
+    color: aqua
+}
+
+
+
+main {
+    display: grid;
+    grid-template-areas:
+        "head head head"
+        "aside content content"
+        "foot foot foot";
+    grid-template-columns: 20% auto auto;
+}
+
+header {
+    grid-area: head;
+}
+
+aside {
+    grid-area: aside;
+}
+
+section {
+    grid-area: content;
+}
+
+footer {
+    grid-area: foot;
+}
+
+@media screen and (min-width: 1650px) {
+    main {
+        width: 1560px;
+    }
+}
+
+@media screen and (max-width: 1020px) {
+    main {
+        display: grid;
+        grid-template-areas:
+            "head head head"
+            "aside aside aside"
+            " content content content"
+            "foot foot foot";
+        grid-template-columns: auto;
+    }
+}

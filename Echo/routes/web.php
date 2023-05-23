@@ -55,5 +55,8 @@ Route::get('/ofertas_empleo/{ofertas_empleo}/show/{empresa_id}', [OfertaEmpleoCo
 Route::resource("empresas", EmpresaController::class);
 Route::resource("candidatos", CandidatoController::class);
 Route::put('/candidatos/{candidato}/update_photo', [CandidatoController::class, 'update_photo'])->name('candidatos.update_photo');
+Route::get('/candidatos/{id}', [CandidatoController::class, 'show'])->name('candidatos.show');
+
+
 Route::resource("puestos", PuestoController::class);
 Route::resource("solicitudes", SolicitudController::class);

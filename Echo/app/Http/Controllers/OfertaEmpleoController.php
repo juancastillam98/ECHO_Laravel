@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Candidato;
 use App\Models\Empresa;
 use App\Models\OfertaEmpleo;
 use App\Models\Puesto;
@@ -103,17 +104,14 @@ class OfertaEmpleoController extends Controller
      */
     public function list_users_information($oferta_id, $empresa_id, $puesto_id)
     {
-        /*
-        $oferta_empleo_id = OfertaEmpleo::find($id_oferta_empleo);
-        $empresa_id = OfertaEmpleo::find($id_empresa);
-        $puesto_id = OfertaEmpleo::find($id_puesto);
-*/
+
         $oferta_empleo = OfertaEmpleo::where('id', $oferta_id)->firstOrFail();
         $empresa = Empresa::where('id', $empresa_id)->firstOrFail();
         $puesto = Puesto::where('id', $puesto_id)->firstOrFail();
+        $candidato_info = Candidato::where('id');
 
-        $oferta_solicitudes = DB::table('oferta_empleos')
-            ->select('users.email', 'candidatos.nombre')
+        $candidatos_solicitudes = DB::table('oferta_empleos')
+            ->select('users.email', 'candidatos.*')
             ->join('solicituds', 'oferta_empleos.id', '=', 'solicituds.oferta_id')
             ->join('candidatos', 'solicituds.candidato_id', '=', 'candidatos.id')
             ->join('users', 'candidatos.user_id', '=', 'users.id')
@@ -123,7 +121,7 @@ class OfertaEmpleoController extends Controller
             ->get();
 
         return view("ofertas_empleo/solicitudes", [
-            "oferta_solicitudes" => $oferta_solicitudes
+            "candidatos_solicitudes" => $candidatos_solicitudes
         ]);
     }
 
