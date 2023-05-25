@@ -108,7 +108,7 @@ class OfertaEmpleoController extends Controller
         $oferta_empleo = OfertaEmpleo::where('id', $oferta_id)->firstOrFail();
         $empresa = Empresa::where('id', $empresa_id)->firstOrFail();
         $puesto = Puesto::where('id', $puesto_id)->firstOrFail();
-        $candidato_info = Candidato::where('id');
+        //$candidato_info = Candidato::where('id');
 
         $candidatos_solicitudes = DB::table('oferta_empleos')
             ->select('users.email', 'candidatos.*')

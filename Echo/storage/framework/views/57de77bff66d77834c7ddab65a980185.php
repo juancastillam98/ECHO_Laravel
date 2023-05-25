@@ -28,7 +28,7 @@
             <!-- Page Heading -->
             <?php if(isset($header)): ?>
                 <header class="bg-color-fondo-300 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-36">
                         <?php echo e($header); ?>
 
                     </div>

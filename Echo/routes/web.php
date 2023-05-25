@@ -6,6 +6,7 @@ use App\Http\Controllers\OfertaEmpleoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\SolicitudController;
+use App\Http\Livewire\Search;
 use App\Models\Candidato;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\HttpKernel\Profiler\Profile;
@@ -57,6 +58,7 @@ Route::resource("candidatos", CandidatoController::class);
 Route::put('/candidatos/{candidato}/update_photo', [CandidatoController::class, 'update_photo'])->name('candidatos.update_photo');
 Route::get('/candidatos/{id}', [CandidatoController::class, 'show'])->name('candidatos.show');
 
+Route::get("/search", Search::class)->name("search");
 
 Route::resource("puestos", PuestoController::class);
 Route::resource("solicitudes", SolicitudController::class);

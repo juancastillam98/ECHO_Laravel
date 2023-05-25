@@ -21,45 +21,47 @@
     <?php $__env->slot('header', null, []); ?> 
         <h1 class="text-4xl font-extrabold my-3">Listado de ofertas de empleo dashboad</h1>
      <?php $__env->endSlot(); ?>
-
-        <aside>Sidebar</aside>
-        <section>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Puesto</th>
-                        <th>Empresa</th>
-                        <th>Vacantes</th>
-                        <th>Fecha Publicación</th>
-                        <th>Fecha Expiración</th>
-                        <th>Requisitos</th>
-                        <th>Salario</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php $__currentLoopData = $ofertas_empleo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $oferta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div class="menu-vertical">
+            <aside>Sidebar</aside>
+            <section>
+                <table>
+                    <thead>
                         <tr>
-                            <td><?php echo e($oferta ->puesto->nombre); ?></td>
-                            <td><?php echo e($oferta ->empresa->nombre); ?></td>
-                            <td><?php echo e($oferta ->numpuestos); ?></td>
-                            <td><?php echo e($oferta ->fecha_publicacion); ?></td>
-                            <td><?php echo e($oferta ->fecha_cierre); ?></td>
-                            <td><?php echo e($oferta ->requisitos); ?></td>
-                            <td><?php echo e($oferta ->salario); ?></td>
-                            <td> 
-                                <form action="<?php echo e(route('solicitudes.store')); ?>" method="POST">
-                                    <?php echo csrf_field(); ?>
-                                    <input type="hidden" name="oferta_id" value="<?php echo e($oferta ->id); ?>">
-                                    <button class="btn btn-primary" type="submit">Solicitar</button>
-                                </form>
-                            </td>
+                            <th>Puesto</th>
+                            <th>Empresa</th>
+                            <th>Vacantes</th>
+                            <th>Fecha Publicación</th>
+                            <th>Fecha Expiración</th>
+                            <th>Requisitos</th>
+                            <th>Salario</th>
+                            <th>Acción</th>
                         </tr>
-                        </tr>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </tbody>
-            </table>
-        </section>
+                    </thead>
+                    <tbody>
+                        <?php $__currentLoopData = $ofertas_empleo; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $oferta): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <tr>
+                                <td><?php echo e($oferta ->puesto->nombre); ?></td>
+                                <td><?php echo e($oferta ->empresa->nombre); ?></td>
+                                <td><?php echo e($oferta ->numpuestos); ?></td>
+                                <td><?php echo e($oferta ->fecha_publicacion); ?></td>
+                                <td><?php echo e($oferta ->fecha_cierre); ?></td>
+                                <td><?php echo e($oferta ->requisitos); ?></td>
+                                <td><?php echo e($oferta ->salario); ?></td>
+                                <td> 
+                                    <form action="<?php echo e(route('solicitudes.store')); ?>" method="POST">
+                                        <?php echo csrf_field(); ?>
+                                        <input type="hidden" name="oferta_id" value="<?php echo e($oferta ->id); ?>">
+                                        <button class="btn btn-primary" type="submit">Solicitar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tr>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        
         <footer>Footer</footer>
 
     

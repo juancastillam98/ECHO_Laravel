@@ -12,10 +12,8 @@
         <h1 class="text-4xl font-extrabold my-3">Listado de solicitantes</h1>
      <?php $__env->endSlot(); ?>
 
-    <div class="container mx-auto px-2 bg-color-fondo-300 color-texto-blanco mt-8"> 
-        
-        <div class="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-     
+        <section>
+            <div class="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 "> 
             <?php $__currentLoopData = $candidatos_solicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $candidato_solicitud): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="w-full max-w-xs border border-cyan-300 bg-color-fondo-200 bg-hover-principal b-radius-xl rounded-lg shadow color-texto-blanco">
                     <div class="flex justify-end px-4 pt-4">
@@ -55,35 +53,9 @@
                 </div>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
+        </section>
+        
 
-        <table>
-        <thead>
-            <tr>
-                <th>Email</th>
-                <th>Nombre</th>
-                <th>Acción</th>
-                <th>Acción</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php $__currentLoopData = $candidatos_solicitudes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $candidato_solicitud): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                <tr>
-
-                    <td><?php echo e($candidato_solicitud ->email); ?></td>
-                    <td><?php echo e($candidato_solicitud ->nombre); ?></td>
-                    <td><?php echo e($candidato_solicitud ->primer_apellido); ?></td>
-                    <td><?php echo e($candidato_solicitud ->foto); ?></td>
-                    
-                        <td>
-                        ver
-                    </td>                                         
-                    
-                </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </tbody>
-    </table>
-    </div>
 
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>

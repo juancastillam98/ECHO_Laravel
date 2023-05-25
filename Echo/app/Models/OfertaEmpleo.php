@@ -21,6 +21,6 @@ class OfertaEmpleo extends Model
 
     public function puesto()
     {
-        return $this->belongsTo(Puesto::class);
+        return $this->belongsTo(Puesto::class, 'puesto_id');
     }
 }

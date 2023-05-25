@@ -4,10 +4,8 @@
         <h1 class="text-4xl font-extrabold my-3">Listado de solicitantes</h1>
     </x-slot>
 
-    <div class="container mx-auto px-2 bg-color-fondo-300 color-texto-blanco mt-8"> 
-        
-        <div class="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-     
+        <section>
+            <div class="grid grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 "> 
             @foreach($candidatos_solicitudes as $candidato_solicitud)
                 <div class="w-full max-w-xs border border-cyan-300 bg-color-fondo-200 bg-hover-principal b-radius-xl rounded-lg shadow color-texto-blanco">
                     <div class="flex justify-end px-4 pt-4">
@@ -47,7 +45,8 @@
                 </div>
             @endforeach
         </div>
+        </section>
+        
 
-    </div>
 
 </x-app-layout>
