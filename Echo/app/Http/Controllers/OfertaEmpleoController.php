@@ -12,6 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
+use App\Http\Livewire\Search;
 
 class OfertaEmpleoController extends Controller
 {
@@ -22,10 +23,28 @@ class OfertaEmpleoController extends Controller
     {
         //todas las ofertas de empleo se listarán en la home
         $ofertas_empleo = OfertaEmpleo::all();
+        $campoOrden = 'puesto_id';
+        $sentido = "desc";
+        //$searchComponent = app(Search::class);
         return view(
             "home",
-            ["ofertas_empleo" => $ofertas_empleo]
+            [
+                "ofertas_empleo" => $ofertas_empleo,
+                "campoOrden" => $campoOrden
+            ]
         );
+        /* return view("home", [
+            'ofertas_empleo' => $ofertas_empleo,
+            'campoOrden' => $campoOrden,
+            "sentido" => $sentido,
+            'searchComponent' => $searchComponent,
+        ]); */
+        /*
+        return view('home', [
+            'ofertas_empleo' => $ofertas_empleo,
+            'campoOrden' => $campoOrden,
+            'sentido' => $sentido,
+        ]);*/
     }
 
     public function mostrar_ofertas()
