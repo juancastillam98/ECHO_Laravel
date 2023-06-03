@@ -28,10 +28,9 @@
 
                                     <?php echo csrf_field(); ?>
                                     <div class="flex justify-center">
-                                        
                                         <input type="file" id="foto" name="foto" class="foto-input texto-input-centro rounded-full w-48 h-48 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700" placeholder="foto">
                                     </div>
-                                    
+
                                 </form>
                             <?php else: ?>
                                 <form id="foto-form" method="post" action="<?php echo e(route('candidatos.update_photo', ['candidato'=>$candidato_info->id])); ?>" enctype="multipart/form-data">
@@ -151,6 +150,9 @@
                         <?php else: ?>
                             <div class="b-radius-xl bg-color-fondo-200 my-3 p-5">
                                 <h3 class="text-2xl mb-3">Información de contacto</h3>
+                                    <div class="flex mt-4 space-x-3 md:mt-6">
+                                        <a href="<?php echo e(route('candidatos.show', ['id' => $candidato_info->id])); ?>" class="btn-principal text-white font-bold cursor-pointer">Ver perfil</a>
+                                    </div>
                                 <div class="grid grid-cols-1 lg:grid-cols-2">
                                     <div class="flex items-center pr-0.5 py-1">
                                         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -179,7 +181,7 @@
                                         <span class="ml-3"><?php echo e($candidato_info->direccion); ?></span>
                                     </div>
                                     <div class="flex items-center pr-0.5 py-1">
-                                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="35" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M29 36.6667C22.1955 36.6578 15.6722 33.9508 10.8607 29.1393C6.04915 24.3278 3.34216 17.8045 3.33334 11C3.33334 8.96666 4.14108 7.01661 5.57886 5.57884C7.01664 4.14106 8.96668 3.33332 11 3.33332C11.4306 3.33004 11.8604 3.36912 12.2833 3.44999C12.6922 3.51049 13.0941 3.61097 13.4833 3.74999C13.7571 3.84604 14.001 4.01188 14.191 4.23111C14.381 4.45034 14.5105 4.71537 14.5667 4.99999L16.85 15C16.9116 15.2714 16.9041 15.554 16.8285 15.8218C16.7528 16.0896 16.6112 16.3342 16.4167 16.5333C16.2 16.7667 16.1833 16.7833 14.1333 17.85C15.775 21.4514 18.6553 24.3436 22.25 26C23.3333 23.9333 23.35 23.9167 23.5833 23.7C23.7824 23.5055 24.027 23.3639 24.2949 23.2882C24.5627 23.2125 24.8452 23.2051 25.1167 23.2667L35.1167 25.55C35.3922 25.6139 35.6469 25.7469 35.8568 25.9364C36.0668 26.1259 36.225 26.3658 36.3167 26.6333C36.4573 27.0289 36.5633 27.436 36.6333 27.85C36.7004 28.2689 36.7339 28.6924 36.7333 29.1167C36.7026 31.1413 35.8722 33.0716 34.4233 34.4861C32.9744 35.9006 31.0248 36.6845 29 36.6667Z" fill="white"/>
                                         </svg>
                                         <span class="ml-3"><?php echo e($candidato_info->telefono); ?></span>
@@ -194,7 +196,7 @@
                             </div>
                             <div class="b-radius-xl bg-color-fondo-200 my-3 p-5">
                                 <div>
-                                    <h3 class="text-2xl mb-3">Habilidades Laboral</h3>
+                                    <h3 class="text-2xl mb-3">Habilidades</h3>
                                     <textarea name="candidato_habilidades" id="candidato_habilidades"  class="b-radius-xl color-texto-negro "><?php echo e($candidato_info->habilidades); ?></textarea>
                                 </div>
                             </div>

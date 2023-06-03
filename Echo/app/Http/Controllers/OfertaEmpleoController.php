@@ -33,18 +33,6 @@ class OfertaEmpleoController extends Controller
                 "campoOrden" => $campoOrden
             ]
         );
-        /* return view("home", [
-            'ofertas_empleo' => $ofertas_empleo,
-            'campoOrden' => $campoOrden,
-            "sentido" => $sentido,
-            'searchComponent' => $searchComponent,
-        ]); */
-        /*
-        return view('home', [
-            'ofertas_empleo' => $ofertas_empleo,
-            'campoOrden' => $campoOrden,
-            'sentido' => $sentido,
-        ]);*/
     }
 
     public function mostrar_ofertas()

@@ -1,47 +1,301 @@
-h1 {
-    color: aqua
+/*Buscador*/
+/**************/
+.buscador {
+    position: absolute;
+    padding: 10px;
+
+}
+
+input {
+    outline: none;
+    box-sizing: border-box;
+    height: 25px;
+    width: 0px;
+    padding: 0 10px;
+    color: #000;
+    border-radius: 30px;
+    font-size: 15px;
+    border: 1px solid var(--bg-color-accent-200);
+    transition: all .7s ease;
+}
+
+::placeholder {
+    color: grey;
+}
+
+.lupa {
+    position: absolute;
+    right: 0px;
+    top: 9px;
+    width: 28px;
+    height: 28px;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.lupa svg {
+    font-size: 25px;
+    color: white;
+    line-height: 80px;
+    transition: all .7s ease;
+}
+
+.buscador:hover input {
+    width: 200px;
+    padding: 5px;
+
+}
+
+.buscador:hover svg {
+    transform: rotate(-360deg);
+    background: var(--bg-color-accent-200);
+    border-radius: 50%;
+
+}
+
+.lupa:hover {
+    background: var(--bg-color-accent-200);
+}
+
+/**********************/
+/***Filtro salario***/
+/*********************/
+.wrapper {
+    width: 100%;
+}
+
+.filtros .listado_filtros {
+    max-width: 100%;
+}
+
+.filtros label,
+.filtros #toggle {
+    display: none;
+}
+
+/* .filtros #toggle svg{
+    
+}
+ */
+
+
+.filtro-salario {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 5px 8px 25px;
+    background-color: transparent;
+}
+
+.salary-input {
+    margin: 10px 0 35px;
+    display: flex;
+    width: 100%;
+}
+
+.salary-input .field {
+    height: 45px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.field input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid gray;
+    text-align: center;
+    font-size: 14px;
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+
+}
+
+.salary-input .separator {
+    width: 10px;
+    display: flex;
+    font-size: 19px;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider {
+    height: 5px;
+    background-color: gray;
+    border-radius: 10px;
+    position: relative;
+}
+
+.slider .progress {
+    height: 5px;
+    left: 1%;
+    right: 1%;
+    position: absolute;
+    border-radius: 5px;
+    background-color: var(--bg-color-accent-200);
+}
+
+.range-input {
+    position: relative;
+}
+
+.range-input input {
+    position: absolute;
+    top: -6px;
+    height: 7px;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    background-color: var(--bg-color-accent-200);
+}
+
+input[type="range"]::-moz-range-thumb {
+    height: 17px;
+    width: 17px;
+    border: none;
+    border-radius: 50%;
+    pointer-events: auto;
+    -moz-appearance: none;
+    background-color: var(--bg-color-accent-200);
 }
 
 
-main .menu-vertical {
-    display: grid;
-    grid-template-areas:
-        "head head head"
-        "aside content content"
-        "foot foot foot";
-    grid-template-columns: 20% auto auto;
+
+/**********************************/
+/***********Vacantes***********/
+/**********************************/
+.vacantes {
+    max-width: 90%;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
-header {
-    grid-area: head;
+.range {
+    height: 80px;
+    width: 380px;
+    border-radius: 10px;
+    padding: 0 35px 0 35px;
 }
 
-aside {
-    grid-area: aside;
+.range .sliderValue {
+    position: relative;
+    text-align: center;
+    width: 100%;
 }
 
-section {
-    grid-area: content;
+.range .sliderValue #spanVacantes {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    top: -40px;
+    transform: translate(-50%) scale(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease-in-out;
+    line-height: 55px;
+    z-index: 2;
 }
 
-footer {
-    grid-area: foot;
+.range .sliderValue #spanVacantes.show {
+    transform: translate(-50%) scale(1);
 }
 
-@media screen and (min-width: 1650px) {
-    main {
-        width: 1560px;
+
+.range .sliderValue #spanVacantes::after {
+    position: absolute;
+    content: "";
+    height: 45px;
+    width: 45px;
+    background-color: var(--bg-color-principal);
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border: 3px solid var(--bg-color-accent-200);
+    z-index: -1;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.range .field {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60%;
+}
+
+.range .field .value {
+    position: absolute;
+    font-size: 16px;
+}
+
+.range .field .value.left {
+    left: -22px;
+}
+
+.range .field .value.right {
+    right: -43px;
+}
+
+.range .field input {
+    -webkit-appearance: none;
+    height: 3px;
+    width: 100%;
+    background: var(--bg-color-accent-200);
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.range .field input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background-color: var(--bg-color-accent-200);
+    border-radius: 50%;
+    border: 1px solid magenta;
+    cursor: pointer;
+}
+
+.range .field input::-moz-range-progress {
+    background-color: var(--bg-color-accent-200);
+}
+
+@media (max-width: 768px) {
+    .filtros .listado_filtros {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
     }
-}
 
-@media screen and (max-width: 1020px) {
-    main .menu-vertical {
-        display: grid;
-        grid-template-areas:
-            "head head head"
-            "aside aside aside"
-            " content content content"
-            "foot foot foot";
-        grid-template-columns: auto;
+    .filtros label {
+        display: inline-flex;
+        cursor: pointer;
+    }
+
+    .filtros #toggle:checked~.listado_filtros {
+        height: 100%;
     }
 }

@@ -39,6 +39,7 @@
             </main>
         </div>
         <script src="{{asset('js/profile.js')}}"></script>
+        <script src="{{asset('js/bases.js')}}"></script>
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         @livewireScripts
     </body>

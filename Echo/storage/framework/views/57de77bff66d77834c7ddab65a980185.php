@@ -42,6 +42,7 @@
             </main>
         </div>
         <script src="<?php echo e(asset('js/profile.js')); ?>"></script>
+        <script src="<?php echo e(asset('js/bases.js')); ?>"></script>
         <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
         <?php echo \Livewire\Livewire::scripts(); ?>
 

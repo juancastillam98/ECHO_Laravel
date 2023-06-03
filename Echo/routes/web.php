@@ -6,6 +6,7 @@ use App\Http\Controllers\OfertaEmpleoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\SolicitudController;
+use App\Http\Livewire\Filter;
 use App\Http\Livewire\Search;
 use App\Models\Candidato;
 use Illuminate\Support\Facades\Route;
@@ -59,6 +60,7 @@ Route::put('/candidatos/{candidato}/update_photo', [CandidatoController::class, 
 Route::get('/candidatos/{id}', [CandidatoController::class, 'show'])->name('candidatos.show');
 
 Route::get("/search", Search::class)->name("search");
+Route::get("/filter", Filter::class)->name("filter");
 
 Route::resource("puestos", PuestoController::class);
 Route::resource("solicitudes", SolicitudController::class);
