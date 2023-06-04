@@ -3,7 +3,7 @@
 
         @php
             $usuarioActual=Auth::user();
-        @endphp
+        @endphphw
     <x-slot name="header">
         <h1 id="titulo_profile" class="text-4xl font-extrabold my-3 mt-10">Mi perfil</h1>
     </x-slot>

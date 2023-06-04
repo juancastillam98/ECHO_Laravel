@@ -10,7 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+
         <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
         <link rel="stylesheet" href="<?php echo e(asset('css/profile.css')); ?>">
         <link rel="stylesheet" href="<?php echo e(asset('css/bases.css')); ?>">

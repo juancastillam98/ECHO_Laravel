@@ -7,24 +7,21 @@
 <?php $attributes = $attributes->except(collect($constructor->getParameters())->map->getName()->all()); ?>
 <?php endif; ?>
 <?php $component->withAttributes([]); ?>
-     <?php $__env->slot('header', null, []); ?> 
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            <?php echo e(__('home')); ?>
+        <link rel="stylesheet" href="<?php echo e(asset('css/welcome.css')); ?>">
+    <!--Portada-->
+    <section class="portada">
+        <div class="portada-foto">
 
-        </h2>
-     <?php $__env->endSlot(); ?>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <?php echo e(__("You're logged in!")); ?>
-
-                    
+            <div id="info">
+                <div class="info-text">
+                    <h1 class="color-texto-blanco text-4xl font-extrabold my-3 mt-8 2xl:text-5xl" id="titulo-intro">Find Your Dream Developer Job Today</h1>
+                    <h2 class="texto-white text-3xl 2xl:text-4xl">Discover opportunities, connect with top companies, and launch your
+                        career asa developer</h2>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal9ac128a9029c0e4701924bd2d73d7f54)): ?>

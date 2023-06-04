@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="{ open: false }" class="">
     <!-- Primary Navigation Menu -->
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 2xl:px-36">
         <div class="flex justify-between h-16">
@@ -70,10 +70,10 @@
             </div>
                 
             @else
-             <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
+             <x-nav-link :href="route('login')" :active="request()->routeIs('login')" class="color-texto-blanco">
                         {{ __('iniciar sesion') }}
                     </x-nav-link>
-                     <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                     <x-nav-link :href="route('register')" :active="request()->routeIs('register')" class="color-texto-blanco">
                         {{ __('register') }}
                     </x-nav-link>
                 

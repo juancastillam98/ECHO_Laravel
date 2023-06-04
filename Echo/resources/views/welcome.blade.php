@@ -1,18 +1,17 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('home') }}
-        </h2>
-    </x-slot>
+        <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
+    <!--Portada-->
+    <section class="portada">
+        <div class="portada-foto">
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
-                    
+            <div id="info">
+                <div class="info-text">
+                    <h1 class="color-texto-blanco text-4xl font-extrabold my-3 mt-8 2xl:text-5xl" id="titulo-intro">Find Your Dream Developer Job Today</h1>
+                    <h2 class="texto-white text-3xl 2xl:text-4xl">Discover opportunities, connect with top companies, and launch your
+                        career asa developer</h2>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
+
 </x-app-layout>

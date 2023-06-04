@@ -1,0 +1,180 @@
+/*************************************************/
+/*************SECCIÓN Portada*************/
+/*************************************************/
+html {
+    margin: 0 auto;
+}
+
+main {
+    padding: 0 !important;
+}
+
+.portada {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.portada-foto {
+
+    background-image: url('/storage/img_project/front_page/portada_mobile.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+}
+
+#info {
+    height: 80%;
+}
+
+#info .info-text {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info-text h1 {
+    text-align: center;
+}
+
+.info-text h2 {
+    text-align: center;
+    margin-top: 0px;
+}
+
+.info-text .btn-intro {
+    display: flex;
+    flex-direction: column;
+    height: 30em;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+
+#info .info-text-cta-section {
+    display: flex;
+    flex-direction: column;
+}
+
+@media(max-width: 768px) {
+    nav {
+        background-color: #171625 !important;
+    }
+
+    .portada {
+        background: linear-gradient(175.01deg, #171625 11.12%, #1A1F3C 32.91%, rgba(142, 85, 190, 0.8) 67.2%, #292E56 94.09%);
+    }
+}
+
+@media(min-width: 768px) {
+    nav {
+        background: linear-gradient(93deg, #000540 5%, #0A1053 19%, #101152 32%, #1D1A4F 37%, #1B1C4F 47%, #1A1A52 98%) !important;
+    }
+
+    #info .info-text {
+        max-width: 450px;
+        width: 100%;
+        padding: 1em 4em 0;
+    }
+
+
+    .info-text h2 {
+        text-align: left;
+    }
+
+    .info-text .btn-intro {
+        flex-direction: row;
+        justify-content: flex-start;
+        height: auto;
+        gap: 2em;
+        margin: inherit;
+        width: auto;
+        margin-top: 1.5em;
+    }
+
+    /*     .portada {
+        height: 56vh;
+    } */
+
+    .portada-foto {
+        background-image: url('/storage/img_project/front_page/definitiva3.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: top;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+@media(min-width: 1024px) {
+
+    #info .info-text {
+        max-width: 600px;
+        padding: 2em 5em 0;
+        /*arriba, izq-der, abajo*/
+    }
+
+
+    .info-text .btn-intro {
+        flex-direction: row;
+        justify-content: flex-start;
+        height: auto;
+        gap: 2em;
+        margin: inherit;
+        width: auto;
+        margin-top: 1.5em;
+    }
+
+    /*     .portada {
+        height: 56vh;
+    } */
+}
+
+@media(min-width: 1440px) {
+    #info .info-text {
+        max-width: 800px;
+        padding: 3em 6em 0;
+        /*arriba, izq-der, abajo*/
+    }
+
+
+
+    .info-text h2 {
+        font-size: var(--font-size-l);
+    }
+
+    .info-text .btn-intro {
+        gap: 4em;
+        margin-top: 2.5em;
+    }
+
+    /*     .portada {
+        height: 100vh;
+    } */
+}
+
+@media(min-width: 2560px) {
+    #info .info-text {
+        max-width: 1000px;
+        padding: 4em 8em 0;
+        /*arriba, izq-der, abajo*/
+    }
+
+
+    .info-text h2 {
+        font-size: var(--font-size-xl);
+    }
+
+    .info-text .btn-intro {
+        gap: 6em;
+        margin-top: 3.5em;
+    }
+
+    /*     .portada {
+        height: 100vh;
+    } */
+}

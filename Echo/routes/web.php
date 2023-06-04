@@ -28,10 +28,10 @@ Route::get('/', function () {
 })->name("index");
 
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
 })->middleware('auth')->name('dashboard');
-Route::get("/home", [OfertaEmpleoController::class, "index"])->middleware('auth')->name('dashboard');
+Route::get("/dashboard", [OfertaEmpleoController::class, "index"])->middleware('auth')->name('dashboard');
 
 // Route::get('/profile', function () {
 
