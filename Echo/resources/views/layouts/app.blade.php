@@ -37,6 +37,7 @@
             <main class="bg-color-fondo-300 mx-auto py-6 px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-10">
                 {{ $slot }}
             </main>
+             @include('layouts.footer')
         </div>
         <script src="{{asset('js/profile.js')}}"></script>
         <script src="{{asset('js/bases.js')}}"></script>
