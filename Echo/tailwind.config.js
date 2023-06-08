@@ -26,6 +26,12 @@ module.exports = {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            maxWidth: {
+                '1/4': '25%',
+            },
+            maxWidth: {
+                '1/2': '50%',
+            }
         },
     },
 

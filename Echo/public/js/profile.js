@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-nombre.addEventListener("focus", (e) => {
+/* nombre.addEventListener("focus", (e) => {
     console.log("click en nombre")
     labelsFormulario[0].classList.add("subir-label")
 })
@@ -116,4 +116,4 @@ formulario.addEventListener("submit", e => {
     } else {
         enviarFormulario()
     }
-})
+}) */

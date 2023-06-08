@@ -21,13 +21,13 @@ class OfertaEmpleoController extends Controller
      */
     public function index()
     {
-        //todas las ofertas de empleo se listarán en la home
+        //todas las ofertas de empleo se listarán en la dashboard
         $ofertas_empleo = OfertaEmpleo::all();
         $campoOrden = 'puesto_id';
         $sentido = "desc";
         //$searchComponent = app(Search::class);
         return view(
-            "home",
+            "dashboard",
             [
                 "ofertas_empleo" => $ofertas_empleo,
                 "campoOrden" => $campoOrden

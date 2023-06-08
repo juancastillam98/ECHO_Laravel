@@ -1,10 +1,10 @@
 
 <div class="menu-vertical">
-        <aside>
+        <aside id ="aside-dashboard" class="md:fixed md:max-w-[25%] md:mt-5">
             <!--buscador-->
-            <div class="px-2 pb-12 items-center mt-2.5">
+            <div class="pl-6 md:px-2 pb-12 items-center mt-2.5">
                 <div class="buscador">
-                    <input wire:model.debounce.500ms="buscador" placeholder="Contenido a buscar" class="border-2" />
+                    <input wire:model.debounce.500ms="buscador" placeholder="Contenido a buscar" class="border-2 color-texto-negro" />
                     <div class="lupa bg-color-principal">
                         <svg fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                             aria-hidden="true">
@@ -15,8 +15,8 @@
                 </div>
             </div>
             <!--filtros-->
-            <div class="wrapper">
-                <div class="filtros rounded-lg bg-color-fondo-200 flex flex-col items-center my-6 border border-cyan-300 blue-shadow">
+            <div id = "wrap1" class="wrapper wrapper-home max-md:max-w-[50%] ">
+                <div class="filtros md:rounded-lg bg-color-fondo-200 flex flex-col items-center mt-2 mb-2 md:border md:border-cyan-300 md:blue-shadow">
                     <label for="toggle">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 color-texto-blanco">
                         <path fill-rule="evenodd" d="M3.792 2.938A49.069 49.069 0 0112 2.25c2.797 0 5.54.236 8.209.688a1.857 1.857 0 011.541 1.836v1.044a3 3 0 01-.879 2.121l-6.182 6.182a1.5 1.5 0 00-.439 1.061v2.927a3 3 0 01-1.658 2.684l-1.757.878A.75.75 0 019.75 21v-5.818a1.5 1.5 0 00-.44-1.06L3.13 7.938a3 3 0 01-.879-2.121V4.774c0-.897.64-1.683 1.542-1.836z" clip-rule="evenodd" />
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="vacantes range">
-                            <label for="rango_vacantes">Vacantes {{$rangoVacantes}}</label>
+                            <label for="rango_vacantes">Vacantes: hasta {{$rangoVacantes}}</label>
                             <div class="sliderValue">
                                 <span id="spanVacantes">100</span>
                             </div>
@@ -69,51 +69,60 @@
         <section>
             @if ($ofertas_empleo->count())
 
-                <div class="flex flex-wrap justify-center mx-6 mb-6">
-                    <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2 " wire:click="ordenar('puesto_id')">
-                        Puesto
-                            @if ($campoOrden === 'puesto_id')
-                                @if ($sentido === 'asc')
-                                    <svg class="w-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                                    </svg>
-                                @else
-                                    <svg class="w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
-                                    </svg>
+                <div id="wrap2" class="wrapper wrapper-home wraper2-mobile max-md:max-w-[50%] ">
+                    <div class="criterios-ordenacion flex flex-wrap justify-center mx-6 mb-px bg-color-fondo-200 ">
+                        <label for="toggle-criterios">
+                            <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="Edit / Sort_Descending"> <path id="Vector" d="M4 17H16M4 12H13M4 7H10M18 13V5M18 5L21 8M18 5L15 8" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g> </g></svg>
+                        </label>
+                        <input type="checkbox" name="" id="toggle-criterios"> 
+                        <div class="criterios">
+                            <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2 " wire:click="ordenar('puesto_id')">
+                                Puesto
+                                    @if ($campoOrden === 'puesto_id')
+                                        @if ($sentido === 'asc')
+                                            <svg class="w-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                            </svg>
+                                        @else
+                                            <svg class="w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+                                            </svg>
+                                        @endif
+                                    @endif
+                            </button>
+                            <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2" wire:click="ordenar('empresa_id')">
+                                Empresa
+                                @if ($campoOrden === 'empresa_id')
+                                    @if ($sentido === 'asc')
+                                        <svg class="w-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                                        </svg>>
+                                    @else
+                                        <svg class="w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+                                        </svg>
+                                    @endif
                                 @endif
-                            @endif
-                    </button>
-                    <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2" wire:click="ordenar('empresa_id')">
-                        Empresa
-                        @if ($campoOrden === 'empresa_id')
-                            @if ($sentido === 'asc')
-                                <svg class="w-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
-                                </svg>>
-                            @else
-                                <svg class="w-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
-                                </svg>
-                            @endif
-                        @endif
-                    </button>
-                    <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2" wire:click="ordenar('puesto_id')">
-                        Vacantes
-                    </button>
-                    <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2" wire:click="ordenar('puesto_id')">
-                        Fecha Publicación
-                    </button>
-                    <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2" wire:click="ordenar('puesto_id')">
-                        Fecha Expiración
-                    </button>
+                            </button>
+                            <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2" wire:click="ordenar('puesto_id')">
+                                Vacantes
+                            </button>
+                            <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2" wire:click="ordenar('puesto_id')">
+                                Fecha Publicación
+                            </button>
+                            <button type="button" class="flex color-texto-blanco border border-cyan-300 bg-hover-principal focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mx-1.5 my-2" wire:click="ordenar('puesto_id')">
+                                Fecha Expiración
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
 
 
-                <div class="flex flex-col mx-6">
+                <div class="flex flex-col mx-6 md:mt-6">
                     @foreach ($ofertas_empleo as $oferta)
 
-                        <div class="w-full border border-cyan-300 bg-color-fondo-200 bg-hover-principal b-radius-xl rounded-lg shadow color-texto-blanco p-2 mb-10">
+                        <div class="w-full border border-cyan-300 bg-color-fondo-200 bg-hover-principal b-radius-xl rounded-lg shadow color-texto-blanco p-2 mb-10 md:mt-">
                             <div class="flex justify-end px-4 pt-4">
                                 <button id="dropdownButton" data-dropdown-toggle="dropdown" class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
                                     <span class="sr-only">Open dropdown</span>
@@ -142,14 +151,40 @@
                                 <h4 class="mb-2 text-xl font-bold">Requisitos</h4>
                                 <textarea  class="b-radius-xl color-texto-negro ">{{$oferta ->requisitos}}</textarea>
                                 <p class="font-bold my-2">Salario: {{ $oferta->salario ? $oferta->salario : 'No especificado' }}</p>
-                                
+                                <!--Animación popup-->
+                           
+                                <div class="popup center b-radius-xl blue-shadow border-cyan-300">
+                                    <div class="icon">
+                                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                            <g id="SVGRepo_iconCarrier">
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                    d="M20.6097 5.20743C21.0475 5.54416 21.1294 6.17201 20.7926 6.60976L10.7926 19.6098C10.6172 19.8378 10.352 19.9793 10.0648 19.9979C9.77765 20.0166 9.49637 19.9106 9.29289 19.7072L4.29289 14.7072C3.90237 14.3166 3.90237 13.6835 4.29289 13.2929C4.68342 12.9024 5.31658 12.9024 5.70711 13.2929L9.90178 17.4876L19.2074 5.39034C19.5441 4.95258 20.172 4.87069 20.6097 5.20743Z"
+                                                    fill="#77bb41"></path>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="title color-texto-blanco">
+                                        Enhorabuena!!
+                                    </div>
+                                    <div class="description color-texto-blanco">
+                                        Has solicitado <strong>¡Satisfactoriamente!</strong>
+                                    </div>
+                                    <div class="dismiss-btn">
+                                        <button class="dismiss-popup-btn btn-principal color-texto-blanco">
+                                            Cerrar
+                                        </button>
+                                    </div>
+                                </div>
 
                                 <div class="flex mt-4 space-x-3 md:mt-4 mb-3">
                                     <form action="{{ route('solicitudes.store') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="oferta_id" value="{{$oferta ->id}}">
-                                        <button class="btn-principal text-white font-bold cursor-pointer" type="submit">Solicitar</button>
-                                    </form>
+                                        <input type="hidden" name="oferta_id" value="{{$oferta ->id}}">                 
+                                        <button class="btn-principal open-popup-btn text-white font-bold cursor-pointer" type="submit">Solicitar</button> 
+{{--                                         <button class="btn-principal open-popup-btn text-white font-bold cursor-pointer" type="submit">Solicitar</button>     
+ --}}                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -158,8 +193,8 @@
 
             @else
                 <div class="px-6 py-3 items-center">
-                No se ha encontrado ningua oferta
-            </div>
+                    No se ha encontrado ningua oferta
+                </div>
             @endif
             @if ($ofertas_empleo->hasPages())
                 <div>

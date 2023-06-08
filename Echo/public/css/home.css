@@ -76,10 +76,19 @@ input {
     display: none;
 }
 
-/* .filtros #toggle svg{
-    
+.criterios-ordenacion label,
+.criterios-ordenacion #toggle-criterios {
+    display: none;
 }
- */
+
+.criterios-ordenacion #toggle-criterios svg {
+    color: white;
+    width: 20px;
+}
+
+.criterios-ordenacion .criterios {
+    display: flex;
+}
 
 
 .filtro-salario {
@@ -283,7 +292,51 @@ input[type="range"]::-moz-range-thumb {
     background-color: var(--bg-color-accent-200);
 }
 
+.top110px {
+    top: 110px;
+}
+
+.top58px {
+    top: 58px;
+}
+
+
+.wraper2-mobile {
+    top: 111px;
+}
+
+
+
 @media (max-width: 768px) {
+    aside {
+        max-width: 100% !important;
+        left: 0;
+    }
+
+    aside div:first-child {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .buscador {
+        max-width: 365px;
+        margin-top: 25px;
+    }
+
+    .buscador:hover input {
+        width: 350px;
+    }
+
+    .filtros {
+        border-width: 0;
+        border-radius: 0%;
+    }
+
+    nav {
+        width: 100%;
+    }
+
     .filtros .listado_filtros {
         width: 100%;
         height: 0;
@@ -298,4 +351,143 @@ input[type="range"]::-moz-range-thumb {
     .filtros #toggle:checked~.listado_filtros {
         height: 100%;
     }
+
+
+    .criterios-ordenacion .criterios {
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        flex-direction: column;
+    }
+
+    .criterios-ordenacion label {
+        display: inline-flex;
+        color: white;
+        cursor: pointer;
+    }
+
+    .criterios-ordenacion #toggle-criterios:checked~.criterios {
+        height: 100%;
+    }
+
+    section {
+        margin-top: 100px;
+    }
+
+}
+
+@media (max-width: 425px) {
+    .buscador {
+        max-width: 310px;
+        margin-top: 25px;
+    }
+
+    .buscador:hover input {
+        width: 295px;
+    }
+}
+
+/**********************************/
+/********Botón submit********/
+/**********************************/
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup {
+    width: 350px;
+    height: 280px;
+    padding: 30px 20px;
+    background: radial-gradient(95.57% 95.57% at 1.71% 0%, rgba(35, 33, 88) 39.58%, rgba(91, 42, 109) 100%);
+    border-radius: 10px;
+    box-sizing: border-box;
+    z-index: 5;
+    text-align: center;
+    opacity: 0;
+    top: -200%;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: opacity 300ms ease-in-out top 1000ms ease-in-out transform 1000ms ease-in-out;
+    position: fixed;
+}
+
+.popup.active {
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 300ms cubic-bezier(0.18, 0.89, 0.43, 1.19);
+}
+
+
+
+.popup .icon {
+    margin: 2px 0px;
+    width: 80px;
+    height: 80px;
+    border: 4px solid rgb(0, 255, 13);
+    text-align: center;
+    display: inline-block;
+    border-radius: 50%;
+    line-height: 60px;
+}
+
+.popup .icon svg {
+    max-width: 130px;
+}
+
+.popup .title {
+    margin: 5px 0px;
+    font-size: 30px;
+    font-weight: 900px;
+
+}
+
+.popup .description {
+    column-rule: #222;
+    font-size: 15px;
+    padding: 5px;
+}
+
+.popup .dismiss-btn {
+    margin-top: 15px;
+}
+
+.popup .dismiss-btn button {
+    padding: 10px 20px;
+    background-color: #111;
+    color: white;
+    border: 2px solid #111;
+    font-size: 16px;
+    font-weight: 600px;
+    cursor: pointer;
+    transition: all 300 ease-in-out;
+}
+
+.popup>div {
+    position: relative;
+    top: 10px;
+    opacity: 0;
+}
+
+.popup.active>div {
+    top: 0px;
+    opacity: 1;
+}
+
+.popup.active svg {
+    transition: all 300ms ease-in-out 250ms;
+}
+
+.popup.active .title {
+    transition: all 300ms ease-in-out 300ms;
+}
+
+.popup.active .description {
+    transition: all 300ms ease-in-out 350ms;
+}
+
+.popup.active .dismiss-btn {
+    transition: all 300ms ease-in-out 400ms;
 }

@@ -20,7 +20,7 @@
                 <div class="grid grid-rows-[200px_minmax(300px, 500px)_100px] gap-12">
                     <div class="flex justify-center mt-1">
                         <?php if(!$esCandidato): ?>
-                            <h2 id="titulo_profile" class="text-3xl text-center font-extrabold my-3">Campo foto</h2>
+                            <h2 id="titulo_profile" class="text-3xl text-center font-extrabold my-3">Foto</h2>
                         <?php else: ?>
                             <?php if(!$candidato_info->foto): ?>
                                 <form id="foto-form" method="post" action="<?php echo e(route('candidatos.update_photo', ['candidato'=>$candidato_info->id])); ?>" enctype="multipart/form-data">
@@ -30,7 +30,6 @@
                                     <div class="flex justify-center">
                                         <input type="file" id="foto" name="foto" class="foto-input texto-input-centro rounded-full w-48 h-48 focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700" placeholder="foto">
                                     </div>
-
                                 </form>
                             <?php else: ?>
                                 <form id="foto-form" method="post" action="<?php echo e(route('candidatos.update_photo', ['candidato'=>$candidato_info->id])); ?>" enctype="multipart/form-data">
@@ -45,7 +44,6 @@
                                     <div class="flex justify-center mt-4">
                                         <label for="foto" class="btn-principal text-white font-bold cursor-pointer">Cambiar foto</label>
                                         <input type="file" id="foto" name="foto" class="foto-input hidden" accept="image/*">
-                                        
                                     </div>
                                 </form>
 
@@ -79,69 +77,67 @@
                         
                         <?php if(!$esCandidato): ?>
                             <section class="modal">
-                                <div class="modal-container">
+                                <p class="my-5">No estás dado de alta como Candidato. Para poder solicitar ofertas de empleo tendrás que cumplimentar todos los datos</p>
+                                <div class="modal-container mt-5">
                                     <form action="<?php echo e(route('candidatos.store')); ?>" method="POST" enctype="multipart/form-data">
                                         <?php echo csrf_field(); ?>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                
-                                                <input type="hidden" name="user_id" value="<?php echo e(Auth::user()->id); ?>">
-                                                
-                                                <div class="mb-6">
-                                                    <label for="foto" class="block mb-2 text-sm font-medium">Foto</label>
-                                                    <input type="file" id="foto" name="foto" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="foto">
-                                                </div>
+                                        
+                                        <input type="hidden" name="user_id" value="<?php echo e(Auth::user()->id); ?>">
+                                        
+                                        <div class="mb-6">
+                                            <label for="foto" class="block mb-2 text-sm font-medium">Foto</label>
+                                            <input type="file" id="foto" name="foto" class="foto-input texto-input-centro rounded-full w-48 h-10 focus:ring-blue-500 focus:border-blue-500 block" placeholder="foto">
 
-                                                
-                                                <div class="mb-6">
-                                                    <label for="nombre" class="block mb-2 text-sm font-medium  " >Nombre</label>
-                                                    <input type="text" id="nombre" name="nombre" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
-                                                </div>
+                                        </div>
 
-                                                
-                                                    <div class="mb-6">
-                                                    <label for="primer_apellido" class="block mb-2 text-sm font-medium    " >Primer Apellido</label>
-                                                    <input type="text" id="primer_apellido" name="primer_apellido" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
-                                                </div>
+                                        
+                                        <div class="mb-6">
+                                            <label for="nombre" class="block mb-2 text-sm font-medium  " >Nombre</label>
+                                            <input type="text" id="nombre" name="nombre" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
+                                        </div>
 
-                                                
-                                                <div class="mb-6">
-                                                    <label for="segundo_apellido" class="block mb-2 text-sm font-medium    " >Segundo Apellido</label>
-                                                    <input type="text" id="segundo_apellido" name="segundo_apellido" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
-                                                </div>
-                                    
-                                                
-                                                <div class="mb-6">
-                                                    <label for="telefono" class="block mb-2 text-sm font-medium    " > Telefono</label>
-                                                    <input type="text" id="telefono" name="telefono" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
-                                                </div>
+                                        
+                                            <div class="mb-6">
+                                            <label for="primer_apellido" class="block mb-2 text-sm font-medium    " >Primer Apellido</label>
+                                            <input type="text" id="primer_apellido" name="primer_apellido" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
+                                        </div>
 
-                                                
-                                                <div class="mb-6">
-                                                    <label for="direccion" class="block mb-2 text-sm font-medium    " > Dirección</label>
-                                                    <input type="text" id="direccion" name="direccion" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
-                                                </div>
+                                        
+                                        <div class="mb-6">
+                                            <label for="segundo_apellido" class="block mb-2 text-sm font-medium    " >Segundo Apellido</label>
+                                            <input type="text" id="segundo_apellido" name="segundo_apellido" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
+                                        </div>
+                            
+                                        
+                                        <div class="mb-6">
+                                            <label for="telefono" class="block mb-2 text-sm font-medium    " > Telefono</label>
+                                            <input type="text" id="telefono" name="telefono" class="color-texto-negro bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
+                                        </div>
 
-                                                
-                                                <div class="mb-6">
-                                                    <label for="habilidades" class="block mb-2 text-sm font-medium    " >Ha‹bilidades</label>
-                                                    <textarea id="habilidades" name="habilidades" rows="4" class="block p-2.5 w-full text-sm   bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
-                                                </div>
+                                        
+                                        <div class="mb-6">
+                                            <label for="direccion" class="block mb-2 text-sm font-medium    " > Dirección</label>
+                                            <input type="text" id="direccion" name="direccion" class="bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="nombre" required>
+                                        </div>
 
-                                                
-                                                <div class="form-group my-2">
-                                                    <label class="form-label" for="experiencia_laboral">Experiencia Laboral <span class="campo_obligatorio">*</span></label>
-                                                    <textarea id="experiencia_laboral" name="experiencia_laboral" rows="4" class="block p-2.5 w-full text-sm   bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
-                                                </div>
+                                        
+                                        <div class="mb-6">
+                                            <label for="habilidades" class="block mb-2 text-sm font-medium    " >Habilidades</label>
+                                            <textarea id="habilidades" name="habilidades" rows="4" class=" color-texto-negro block p-2.5 w-full text-sm  bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+                                        </div>
 
-                                                
-                                                <div class="d-inline">
-                                                        <button type="submit" name="btnAnadir" class="btn-principal">Register new account</button>
-                                                </div>
-                                                <div class="d-inline">
-                                                    <a class="btn btn-secondary my-5" href="./">Volver nuevo</a>
-                                                </div>
-                                            </div>
+                                        
+                                        <div class=" mb-6">
+                                            <label for="experiencia_laboral" class="block mb-2 text-sm font-medium">Experiencia Laboral</label>
+                                            <textarea id="experiencia_laboral" name="experiencia_laboral" rows="4" class="color-texto-negro bg-gray-50 border border-gray-300   text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Leave a comment..."></textarea>
+                                        </div>
+
+                                        
+                                        <div class="d-inline">
+                                                <button type="submit" name="btnAnadir" class="btn-principal">Register new account</button>
+                                        </div>
+                                        <div class="d-inline">
+                                            <a class="btn btn-secondary my-5" href="./">Volver nuevo</a>
                                         </div>
                                     </form>
 
@@ -208,7 +204,7 @@
                             <a href="<?php echo e(route('empresas.create')); ?>" class="btn-principal text-white font-bold cursor-pointer">Crear empresa</a>                
                         <?php else: ?>
                             <div class="bg-color-principal flex justify-center max-w-xs py-3 b-radius-xl mb-2">
-                                <h2 class="text-3xl font-bold  "><?php echo e($empresa_info->nombre); ?></h2>
+                                <h2 class="text-3xl font-bold  "><?php echo e($usuarioActual->empresa->nombre); ?></h2>
                             </div>
                             
                                 

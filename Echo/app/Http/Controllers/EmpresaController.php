@@ -47,7 +47,7 @@ class empresaController extends Controller
         $empresa->descripcion = $request->input("descripcion");
         $empresa->save(); //el save es como el insert en la bd
 
-        return redirect("empresas");
+        return redirect("profile");
     }
 
     /**

@@ -5,8 +5,6 @@
     </x-slot>
 
      @livewire('search') 
-    
-
 
     <footer>Footer</footer>
 

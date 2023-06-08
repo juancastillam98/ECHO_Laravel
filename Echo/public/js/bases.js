@@ -1,6 +1,52 @@
 const rangeInput = document.querySelectorAll(".range-input input");
 const salaryInput = document.querySelectorAll(".salary-input input");
 const progressBar = document.querySelector(".slider .progress");
+const asideHome = document.querySelector("#aside-dashboard");
+const wrapersHome = document.querySelectorAll(".wrapper-home");
+const wrap1 = document.querySelector("#wrap1");
+const wrap2 = document.querySelector("#wrap2");
+const filtros = document.querySelector(".filtros");
+const toggleFiltros = document.querySelector("#toggle");
+const toggleCriterios = document.querySelector("#toggle-criterios");
+
+//Botones submit
+
+const openButtons = document.querySelectorAll(".open-popup-btn");
+const closeButtons = document.querySelectorAll(".dismiss-popup-btn");
+const popup = document.querySelector(".popup");
+const form = document.querySelector("form")
+
+
+if (this.window.innerWidth < 768) {
+    asideHome.classList.add("fixed", "w-full", "top58px", "bg-color-fondo-200", "max-w-full");
+    wrapersHome.forEach((wrap) => {
+        wrap.classList.add("fixed", "w-1/2", "flex", "flex-col", "justify-center", "bg-color-fondo-200");
+    });
+    wrap1.classList.add("top110px");
+    filtros.classList.remove("md:border")
+    wrap2.classList.add("left-1/2", "z-10", "flex", "justify-start", "pt-2");
+};
+
+
+//animaciones botones
+openButtons.forEach((openButton) => {
+    openButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        popup.classList.add("active");
+        setTimeout(() => {
+            popup.classList.remove("active");
+            form.submit();
+        }, 3000);
+    });
+});
+
+closeButtons.forEach((closeButton) => {
+    closeButton.addEventListener("click", () => {
+        popup.classList.remove("active");
+    });
+});
+
+//Cálculo de los filtros
 let salaryGap = 1000;
 salaryInput.forEach(input => {
     input.addEventListener("input", e => {
@@ -45,7 +91,6 @@ rangeInput.forEach(input => {
 
 
 //Slider vacantes
-
 const sliderValue = document.querySelector("#spanVacantes");
 const inputSlider = document.querySelector("#rango_vacantes");
 inputSlider.oninput = (() => {
@@ -57,3 +102,4 @@ inputSlider.oninput = (() => {
 inputSlider.onblur = (() => {
     sliderValue.classList.remove("show");
 });
+

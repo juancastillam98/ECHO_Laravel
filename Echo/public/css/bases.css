@@ -64,13 +64,11 @@ main .menu-vertical {
 }
 
 nav {
-    position: sticky;
     top: 0;
-    background-color: linear-gradient(93deg, #070C3D 5%, #0A1053 19%, #101152 32%, #1D1A4F 37%, #1B1C4F 47%, #19194E 98%);
+    background-color: var(--bg-color-fondo-300);
     color: white;
 }
 
-nav {}
 
 header {
     grid-area: head;
@@ -93,7 +91,7 @@ footer {
         max-width: 1650px;
         width: 1560px;
     }
-} 
+}
 
 @media screen and (max-width: 768px) {
     main .menu-vertical {

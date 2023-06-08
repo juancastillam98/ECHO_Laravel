@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Spatie\Ignition\Contracts\Solution;
 
 class SolicitudController extends Controller
@@ -41,7 +42,8 @@ class SolicitudController extends Controller
         $solicitud->candidato_id = Auth::user()->candidato->id;
         $solicitud->estado = "enviada";
         $solicitud->save();
-        return redirect("home");
+        return redirect("dashboard");
+        /*   return Redirect::back(); */
     }
 
     /**
